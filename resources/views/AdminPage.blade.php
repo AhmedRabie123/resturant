@@ -22,6 +22,9 @@
 
                         <a style="float:right;" href=""><button class="bnt btn-info btn-default"
                                 style="margin-left:6px ;">عرض الوجبات</button></a>
+                                
+                                <a style="float:right;" href=""><button class="bnt btn-info btn-default"
+                                style="margin-left:6px ;">عرض الوجبات</button></a>
 
                     </div>
                     
