@@ -80,7 +80,7 @@
                    
                   </table>
 
-            
+                  {{ $cats->links()}}
        
                 </div>
                
@@ -91,6 +91,7 @@
     </div>
 
 </div>
+
 
 
 
@@ -144,5 +145,7 @@
             });
 
 </script>
+
+
 
 @endsection

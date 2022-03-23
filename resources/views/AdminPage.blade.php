@@ -20,7 +20,7 @@
                         <a style="float:right;" href="{{ route ('meal.create') }}"><button class="bnt btn-danger btn-default"
                                 style="margin-left:6px ;">إضافة وجبة </button></a>
 
-                        <a style="float:right;" href=""><button class="bnt btn-info btn-default"
+                        <a style="float:right;" href="{{ route('meal.index') }}"><button class="bnt btn-info btn-default"
                                 style="margin-left:6px ;">عرض الوجبات</button></a>
 
                     </div>

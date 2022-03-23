@@ -28,7 +28,7 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
-
+    <link rel="stylesheet" href="//cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
 
 
 </head>
@@ -123,6 +123,36 @@
                                 });
                             });
                         </script>
+
+
+
+    <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script> 
+    <script src="//cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+ 
+    <script>
+       @if(Session::has('message_id'))
+       var type ="{{Session::get('alert-type','info')}}"
+       switch(type){
+           case'info':
+           toastr.info("{{Session::get('message_id')}}");
+           
+           break;
+   
+            case'success':
+           toastr.success("{{Session::get('message_id')}}");
+           break;
+   
+           case'warning':
+           toastr.warning ("{{Session::get('message_id')}}");
+           break;
+   
+            case'error':
+           toastr.error ("{{Session::get('message_id')}}");
+           break;
+       }
+   
+   @endif
+   </script>
 
 </body>
 </html>
