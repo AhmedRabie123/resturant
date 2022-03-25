@@ -57,10 +57,10 @@ class MealController extends Controller
     
     $notification = array(
         'message_id' => 'تم اضافة الوجبه بنجاح!',
-        'alert-type' => 'success'
+        'alert-type' => 'success',
     );
  
-   return redirect()->back()->with($notification);
+   return redirect()->route('meal.index')->with($notification);
 
     }
 
@@ -120,8 +120,13 @@ class MealController extends Controller
 
 
     }
+    
+    public function delete ($id) {
+ 
+       meal::find($id)->delete();
+       return redirect()->route('meal.index')->with('message' , 'تم حذف الوجبه بنجاح!');
 
-
+    }
     
 
 

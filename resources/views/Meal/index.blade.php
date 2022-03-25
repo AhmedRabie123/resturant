@@ -61,7 +61,7 @@
                                         <td><a href="{{route('meal.edit' , $row->id )}}"><button class="btn btn-primary">تعديل</button></a></td>
 
                                        
-                                        <td> <a href="" class="btn btn-danger" id="delete">حذف</a></td>
+                                        <td> <a href="{{route('meal.delete' , $row->id )}}" class="btn btn-danger" id="delete">حذف</a></td>
                                            
                                         
                                     </tr>
