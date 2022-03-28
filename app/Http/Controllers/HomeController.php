@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\category;
 use App\models\meal;
-
+use App\models\order;
 
 class HomeController extends Controller
 {
@@ -36,19 +36,49 @@ class HomeController extends Controller
     } else{
  
         if(!$request->category){
-
+              
+            $cat1 = 'الصفحه الرئيسيه';
             $meals = meal::all();
-            return view('UserPage' , compact('cats' , 'meals'));
+            return view('UserPage' , compact('cats' , 'meals' , 'cat1'));
 
         } else{
-
+            $cat1 = $request->category;
             $meals = meal::where('category' , $request->category)->get();
-            return view('UserPage' , compact('cats' , 'meals'));
+            return view('UserPage' , compact('cats' , 'meals' , 'cat1'));
          }
      }
   } 
   
+ 
 
+    public function orderStore (Request $request) {
+  
+
+        order::insert([
+
+            'user_id' => Auth()->user()->id,
+            'phone' => $request->phone,
+            'date' => $request->date,
+            'time' => $request->time,
+            'meal_id' => $request->meal_id,
+            'qty' => $request->qty,
+            'address' => $request->address,
+            'status' =>'تتم مراجعة الطلب!',
+
+
+
+        ]);
+
+        $notification = array(
+            'message_id' => 'تم اضافةالطلب بنجاح!',
+            'alert-type' => 'success',
+        );
+     
+       return redirect()->route('home')->with($notification);
+    
+        
+       
+    }
 
 }
 

@@ -17,17 +17,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
  
-//visitor
-
+//visitor route
+ 
 Route::get('/', [VisitorController::class, 'index'])->name('Vpage');
 
 Auth::routes();
 
-//home
+//home route
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-//category
+//category route
 
 Route::get('/category' , [CategoryController::class , 'show'])->name('cat.show');
 
@@ -38,7 +38,7 @@ Route::get('/category/{id}' , [CategoryController::class , 'delete'])->name('cat
 Route::post('/category/update' , [CategoryController::class , 'update'])->name('cat.update');
 
 
-//Meals
+//Meals route
 
 Route::get('/meal/show' , [MealController::class , 'index'])->name('meal.index');
 
@@ -51,3 +51,13 @@ Route::get('/meal/edit/{id}' , [MealController::class , 'edit'])->name('meal.edi
 Route::post('/meal/update/{id}' , [MealController::class , 'update'])->name('meal.update');
 
 Route::get('/meal/{id}' , [MealController::class , 'delete'])->name('meal.delete');
+
+Route::get('/meal/show/{id}' , [MealController::class , 'show_details'])->name('meal_details');
+
+//orders route
+
+Route::post('order/store' , [HomeController::class , 'orderStore'])->name('order.store');
+
+
+
+

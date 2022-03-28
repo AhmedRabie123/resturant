@@ -127,7 +127,14 @@ class MealController extends Controller
        return redirect()->route('meal.index')->with('message' , 'تم حذف الوجبه بنجاح!');
 
     }
-    
+     
+     
+    public function show_details ($id) {
+       
+      $meal = meal::findOrFail($id);
+      return view ('meal.meal_details' , compact('meal'));
+
+    }
 
 
 }

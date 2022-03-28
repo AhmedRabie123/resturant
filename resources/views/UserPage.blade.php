@@ -39,7 +39,7 @@
             <div class="col-md-8">
                 <div class="card">
                       
-                    <div class="card-header text-center">  <h4></h4>   عدد الوجبات ({{ count ($meals) }})</div>
+                    <div class="card-header text-center">  <h4>{{$cat1}}</h4> عدد الوجبات ({{ count ($meals) }})</div>
                       
                     <div class="card-body">
                         <div class="row">
@@ -51,7 +51,7 @@
                                     <p>{{$meal->description}}</p>
                                     <div>
 
-                                        <a href="" class="btn btn-success" style="font-size:16px" title="Add Cart">
+                                        <a href="{{ route('meal_details' , $meal->id)}}" class="btn btn-success" style="font-size:16px" title="Add Cart">
                                             <i class="fa fa-bell-slash-o" style="font-size:16px;color:white">اطلب الأن
                                         </a></i>
 
@@ -85,6 +85,11 @@
         }
 
         a.list-group-item:hover {
+            background-color: rgb(61, 114, 56);
+            color: #fff;
+        }
+
+        .list-group-item:hover {
             background-color: rgb(61, 114, 56);
             color: #fff;
         }
