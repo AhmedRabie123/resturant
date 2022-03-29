@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\models\category;
 use App\models\meal;
 use App\models\order;
+use App\models\user;
+
 
 class HomeController extends Controller
 {
@@ -30,8 +33,9 @@ class HomeController extends Controller
     $cats = category::all();
 
     if(Auth()->User()->is_admin ==1 ){ 
-
-        return view ('Adminpage');
+         
+        $order = order::orderBy('id', 'DESC')->get();
+        return view ('Adminpage' , compact('order'));
 
     } else{
  
@@ -79,6 +83,35 @@ class HomeController extends Controller
         
        
     }
+
+
+ 
+    public function show_order () {
+
+
+        $order = order::where('user_id', Auth::user()->id)->get();
+ 
+        return view('order.show_order' , compact('order'));
+    }
+ 
+     
+    public function changeStatus (Request $request , $id) {
+
+       
+       $order = order::find($id);
+       order::where('id' , $id)->update([
+ 
+        'status' => $request->status,
+         
+       ]);
+         
+       return back();
+     
+    }
+
+
+    
+
 
 }
 

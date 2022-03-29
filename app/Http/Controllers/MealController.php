@@ -8,6 +8,7 @@ use App\Models\meal;
 use Intervention\Image\Facades\Image;
 
 
+
 class MealController extends Controller
 {
 
@@ -123,10 +124,10 @@ class MealController extends Controller
     
     public function delete ($id) {
  
-       meal::find($id)->delete();
-       return redirect()->route('meal.index')->with('message' , 'تم حذف الوجبه بنجاح!');
+      meal::find($id)->delete();
+      return redirect()->route('meal.index')->with('message' , 'تم حذف الوجبه بنجاح!');
 
-    }
+   }
      
      
     public function show_details ($id) {
@@ -136,5 +137,33 @@ class MealController extends Controller
 
     }
 
+
+    public function mealSearch (Request $request) {
+ 
+      $search = $request->input('search');
+      $meals = meal::query()
+      ->where('name' , 'LIKE' , "%{$search}%")
+      ->orwhere('description' , 'LIKE' , "%{$search}%")
+      ->get();
+      return view ('meal.meal_search' , compact('meals'));
+
+    } 
+     
+    public function mealPage () {
+
+      if(Auth::check()) {
+
+        return redirect()->route('home');
+
+      } else{
+   
+      return redirect()->route('Vpage'); 
+   
+     }
+
+
+    }
+
+  
 
 }

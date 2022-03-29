@@ -52,12 +52,18 @@ Route::post('/meal/update/{id}' , [MealController::class , 'update'])->name('mea
 
 Route::get('/meal/{id}' , [MealController::class , 'delete'])->name('meal.delete');
 
+Route::get('/meal/search' , [MealController::class , 'mealSearch'])->name('meal.search');
+
+Route::get('/meal/page' , [MealController::class , 'mealPage'])->name('mealpage');
+
 Route::get('/meal/show/{id}' , [MealController::class , 'show_details'])->name('meal_details');
 
 //orders route
 
 Route::post('order/store' , [HomeController::class , 'orderStore'])->name('order.store');
 
+Route::get('show/order' , [HomeController::class , 'show_order'])->name('show.order');
 
+Route::post('/order/status/{id}' , [HomeController::class , 'changeStatus'])->name('order.status');
 
 

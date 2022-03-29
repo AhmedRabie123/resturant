@@ -9,41 +9,26 @@
                     <div class="card-header text-center">القائمة</div>
                     <div class="card-body text-right">
                         <form action="" method="get">
-                            <a class="list-group-item list-group-item-action"  href="/home">الصفحة الرئيسية</a>
-                            @foreach ($cats as $row)
-                                <input type="submit" value="{{ $row->cat_name }}" name="category"
-                                    class="list-group-item list-group-item-action  " >
-                            @endforeach
-
-
+                            <a class="list-group-item list-group-item-action"  href="{{ route('mealpage') }}">الصفحة الرئيسية</a>
+                           
                         </form>
-                    </div>
-                </div>
-
+                  </div>
+               </div>
             </div>
 
             <div class="col-md-8">
                 <div class="card">
                       
-                    <div class="card-header text-center">  <h4>{{$cat1}}</h4> عدد الوجبات ({{ count ($meals) }})</div>
+                    <div class="card-header bg-info text-center">  <h4></h4> عدد الوجبات ({{ count ($meals) }})</div>
                       
-                        <div class="card-body text-right">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <form action="{{ route('meal.search') }}" method="get">
-                                    <div class="d-flex">
-                                        <input type="text" name="search" class="form-control w-75 me-5" placeholder="ابحث عن وجبتك">
-                                        <input type="submit" name="btn_search" class="btn btn-success" value="يحث">
-                                    </div>
-                                </form>
-                            </div>
-                        </div> 
-
+                    <div class="card-body text-right">
+                      
                         </br>
                         
                         <div class="row">
-
-                        @forelse ($meals as $meal)
+                            
+                      @if ($meals->isNotEmpty())
+                          @foreach($meals as $meal)
                                 <div class="col-md-4 mt-2 text-center" style="border: 1px solid rgb(149, 212, 159) ;">
                                     <img src="{{ asset ($meal->image) }}" class="img-thumbnail" style="width:100%;">
                                     <strong>{{$meal->name}}</strong>
@@ -57,10 +42,10 @@
                                     </div>
                                     <br>
                                 </div>
-                           @empty
+                           @endforeach
+                            @else
                                 <p>لا يوجد وجبات متوفرة</p>
-                            
-                        @endforelse
+                           @endif
 
                         </div>
                     </div>
@@ -108,7 +93,4 @@
 
 
 @endsection
-
-
-
 

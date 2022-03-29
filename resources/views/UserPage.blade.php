@@ -26,10 +26,9 @@
                     <div class="card-header text-center">الطلبات السابقة</div>
                     <div class="card-body text-right">
                         <form action="" method="get">
-                            <a class="list-group-item list-group-item-action"  href="/order/show">اظهار الطلبات السابقة</a>
+                            
+                            <a class="list-group-item list-group-item-action"  href="{{ route ('show.order')}}">اظهار الطلبات السابقة</a>
                            
-
-
                         </form>
                     </div>
                 </div>
@@ -41,7 +40,20 @@
                       
                     <div class="card-header text-center">  <h4>{{$cat1}}</h4> عدد الوجبات ({{ count ($meals) }})</div>
                       
-                    <div class="card-body">
+                    <div class="card-body text-right">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form action="{{ route('meal.search') }}" method="get">
+                                    <div class="d-flex">
+                                        <input type="text" name="search" class="form-control w-75 me-5" placeholder="ابحث عن وجبتك">
+                                        <input type="submit" name="btn_search" class="btn btn-success" value="يحث">
+                                    </div>
+                                </form>
+                            </div>
+                        </div> 
+
+                        </br>
+
                         <div class="row">
                             
                         @forelse ($meals as $meal)

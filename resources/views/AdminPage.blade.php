@@ -47,24 +47,37 @@
                             </thead>
                             <tbody>
 
+                        @foreach($order as $row)
 
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2</td>
-                                        <td>3</td>
-                                        <td>4</td>
-                                        <td>5</td>
-                                        <td>6</td>
-                                        <td>7</td>
-                                        <td>8</td>
-                                        <td>9</td>
-                                        <td>10</td>
-                                        <td>11</td>
-                                        <td>12</td>
-                                        <td>13</td>
-                                        <td>14</td>
+                                     <tr>
+                                        <td>{{$row->user->name}}</td>
+                                        <td>{{$row->user->email}}</td>
+                                        <td>{{$row->phone}}</td>
+                                        <td>{{$row->time}}</td>
+                                        <td>{{$row->date}}</td>
+                                        <td>{{$row->meal->name}}</td>
+                                        <td>{{$row->qty}}</td>
+                                        <td>${{$row->meal->price}}</td>
+                                        <td>${{$row->meal->price * $row->qty}}</td>
+                                        <td>{{$row->address}}</td>
+                                        <td>{{$row->status}}</td>
+                                       
+                                     <form action="{{route('order.status' , $row->id)}}"  method="post"> 
+                                         @csrf
+                                            <td>
+                                              <input type="submit" name="status" value="قبول" class="btn btn-primary btn-sm">
+                                            </td>
+                                            <td>
+                                               <input type="submit" name="status" value="رفض" class="btn btn-danger btn-sm">
+                                            </td>
+                                            <td>
+                                               <input type="submit" name="status" value="إتمام" class="btn btn-success btn-sm">
+                                            </td>
 
-                                    </tr>
+                                      </tr>
+                                   </form>  
+                         @endforeach
+                                
                                 
 
 
