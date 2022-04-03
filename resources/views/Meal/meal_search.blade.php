@@ -19,7 +19,7 @@
             <div class="col-md-8">
                 <div class="card">
                       
-                    <div class="card-header bg-info text-center">  <h4></h4> عدد الوجبات ({{ count ($meals) }})</div>
+                    <div class="card-header bg-#fff text-center">  <h4></h4> عدد الوجبات ({{ count ($meals) }})</div>
                       
                     <div class="card-body text-right">
                       

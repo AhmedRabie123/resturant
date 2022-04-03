@@ -38,6 +38,9 @@ Route::get('/category/{id}' , [CategoryController::class , 'delete'])->name('cat
 Route::post('/category/update' , [CategoryController::class , 'update'])->name('cat.update');
 
 
+
+
+
 //Meals route
 
 Route::get('/meal/show' , [MealController::class , 'index'])->name('meal.index');
@@ -50,13 +53,13 @@ Route::get('/meal/edit/{id}' , [MealController::class , 'edit'])->name('meal.edi
 
 Route::post('/meal/update/{id}' , [MealController::class , 'update'])->name('meal.update');
 
-Route::get('/meal/{id}' , [MealController::class , 'delete'])->name('meal.delete');
-
 Route::get('/meal/search' , [MealController::class , 'mealSearch'])->name('meal.search');
 
 Route::get('/meal/page' , [MealController::class , 'mealPage'])->name('mealpage');
 
 Route::get('/meal/show/{id}' , [MealController::class , 'show_details'])->name('meal_details');
+
+Route::get('/meal/{id}' , [MealController::class , 'delete'])->name('meal.delete');
 
 //orders route
 

@@ -32,7 +32,7 @@ class HomeController extends Controller
     
     $cats = category::all();
 
-    if(Auth()->User()->is_admin ==1 ){ 
+    if(Auth()->User()->is_admin == 1 ){ 
          
         $order = order::orderBy('id', 'DESC')->get();
         return view ('Adminpage' , compact('order'));

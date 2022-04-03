@@ -68,7 +68,7 @@
                                     <option value="" selected="" disabled="">اختر صنف</option>
                                     @foreach( $cats as $row )
 
-                                        <option value={{ $row->cat_name}}> {{ $row->cat_name}}</option>
+                                        <option value="{{ $row->cat_name}}"> {{ $row->cat_name}}</option>
                                     
                                     @endforeach    
 
