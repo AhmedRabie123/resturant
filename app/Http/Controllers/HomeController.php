@@ -43,12 +43,12 @@ class HomeController extends Controller
               
             $cat1 = 'الصفحه الرئيسيه';
             $meals = meal::all();
-            return view('UserPage' , compact('cats' , 'meals' , 'cat1'));
+            return view('UserPage' , compact('cats', 'meals', 'cat1'));
 
         } else{
             $cat1 = $request->category;
             $meals = meal::where('category' , $request->category)->get();
-            return view('UserPage' , compact('cats' , 'meals' , 'cat1'));
+            return view('UserPage' , compact('cats', 'meals', 'cat1'));
          }
      }
   } 

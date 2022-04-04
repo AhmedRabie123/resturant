@@ -10,6 +10,7 @@
                     <div class="card-body text-right">
                         <form action="" method="get">
                             <a class="list-group-item list-group-item-action"  href="/home">الصفحة الرئيسية</a>
+                            <h5>  قائمة الاصناف</h5>  
                             @foreach ($cats as $row)
                                 <input type="submit" value="{{ $row->cat_name }}" name="category"
                                     class="list-group-item list-group-item-action  " >
