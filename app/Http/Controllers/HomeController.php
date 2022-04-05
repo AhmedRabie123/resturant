@@ -34,7 +34,7 @@ class HomeController extends Controller
 
     if(Auth()->User()->is_admin == 1 ){ 
          
-        $order = order::orderBy('id', 'DESC')->get();
+        $order = order::orderBy('id', 'DESC')->paginate(7);
         return view ('Adminpage' , compact('order'));
 
     } else{
@@ -74,7 +74,7 @@ class HomeController extends Controller
         ]);
 
         $notification = array(
-            'message_id' => 'تم اضافةالطلب بنجاح!',
+            'message_id' => 'تم اضافةالطلب بنجاح',
             'alert-type' => 'success',
         );
      
@@ -89,7 +89,7 @@ class HomeController extends Controller
     public function show_order () {
 
 
-        $order = order::where('user_id', Auth::user()->id)->get();
+        $order = order::where('user_id', Auth::user()->id)->paginate(7);
  
         return view('order.show_order' , compact('order'));
     }
@@ -104,8 +104,13 @@ class HomeController extends Controller
         'status' => $request->status,
          
        ]);
+
+       $notification = array(
+        'message_id' => 'تم تغيير حالة الطلب بنجاح',
+        'alert-type' => 'success',
+    );
          
-       return back();
+       return back()->with($notification);
      
     }
 

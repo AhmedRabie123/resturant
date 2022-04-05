@@ -79,10 +79,11 @@
                          @endforeach
                                 
                                 
-
-
                             </tbody>
                         </table>
+
+                        {{ $order->links() }}
+                        
                     </div>
                 </div>
             </div>
